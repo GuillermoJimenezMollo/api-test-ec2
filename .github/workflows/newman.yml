@@ -35,7 +35,7 @@ jobs:
       # Iniciar el servidor Spring Boot
       - name: Start Spring Boot Server
         run: |
-          nohup java -jar build/libs/api_zelda-1.0.0.jar &
+          nohup java -jar build/libs/*.jar &
         env:
           SPRING_PROFILES_ACTIVE: test
 
