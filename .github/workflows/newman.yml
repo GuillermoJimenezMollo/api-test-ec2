@@ -39,7 +39,9 @@ jobs:
           node-version: '16'
 
       - name: Install Newman
-        run: npm install -g newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-html
 
       # Paso 6: Ejecutar la colección de Postman con Newman
       - name: Run Postman Collection with Newman
