@@ -25,8 +25,8 @@ jobs:
           distribution: 'temurin'
 
       # Paso 3: Instalar Gradle
-      - name: Set up Gradle
-        uses: gradle/wrapper-validation-action@v1
+      - name: Grant execute permission for Gradle Wrapper
+        run: chmod +x gradlew
 
       # Paso 4: Construir el proyecto con Gradle (sin ejecutar las pruebas por ahora)
       - name: Build with Gradle
