@@ -47,7 +47,7 @@ jobs:
 
       # Paso 7: Subir el reporte HTML como un artifact
       - name: Upload Newman Report as Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: newman-report
           path: ./newman-report.html
