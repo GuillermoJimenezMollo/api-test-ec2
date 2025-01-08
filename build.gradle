@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'org.gjimenez'
-version = '1.0-SNAPSHOT'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
@@ -16,6 +16,16 @@ java {
     }
 }
 
+
+jar {
+    archivesBaseName = 'api_zelda'
+    version = '1.0.0'
+    manifest {
+        attributes(
+                'Main-Class': 'org.gjimenez.Main'  // Clase principal de tu aplicación
+        )
+    }
+}
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
