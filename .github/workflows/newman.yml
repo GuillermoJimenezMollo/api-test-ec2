@@ -70,7 +70,7 @@ jobs:
 
       # Ejecutar la colección Postman con Newman
       - name: Run Postman Collection with Newman
-        run: newman run ./collection.json --reporters cli,html --reporter-html-export ./newman-report.html
+        run: newman run ./collections/games.postman_collection.json --reporters cli,html --reporter-html-export ./newman-report.html
 
       # Subir el reporte HTML como un artifact
       - name: Upload Newman Report as Artifact
