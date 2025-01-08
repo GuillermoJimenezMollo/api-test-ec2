@@ -16,15 +16,13 @@ java {
     }
 }
 
+tasks.named('jar') {
+    enabled = false // Desactiva el JAR normal
+}
 
-jar {
-    archivesBaseName = 'api_zelda'
-    version = '1.0.0'
-    manifest {
-        attributes(
-                'Main-Class': 'org.gjimenez.Main'  // Clase principal de tu aplicación
-        )
-    }
+bootJar {
+    archiveBaseName.set('api_zelda') // Nombre del JAR
+    archiveVersion.set('1.0.0') // Versión del JAR
 }
 
 dependencies {

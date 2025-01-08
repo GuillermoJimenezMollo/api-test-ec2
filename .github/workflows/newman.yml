@@ -30,12 +30,15 @@ jobs:
 
       # Construir el proyecto
       - name: Build with Gradle
-        run: ./gradlew build -x test
+        run: ./gradlew clean build
+
+      - name: Verify JAR file
+        run: ls build/libs/
 
       # Iniciar el servidor Spring Boot
       - name: Start Spring Boot Server
         run: |
-          nohup java -jar build/libs/*.jar &
+          nohup java -jar build/libs/api_zelda-1.0.0.jar &
         env:
           SPRING_PROFILES_ACTIVE: test
 
