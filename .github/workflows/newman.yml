@@ -62,13 +62,12 @@ jobs:
       - name: Install Newman and HTML Reporter
         run: |
           npm install -g newman
-          npm install -g newman-reporter-html-extra
+          npm install -g newman-reporter-htmlextra
       # Ejecutar la colección Postman con Newman
       - name: Run Postman Collection with Newman
         run: |
-          newman run ./collections/reqres.in.local.postman_collection.json \
-          --reporters cli,html-extra \
-          --reporter-html-extra-export ./reports/newman-report.html
+          mkdir -p reports
+          newman run ./collections/reqres.in.local.postman_collection.json -r htmlextra -o ./reports/result.html
 
     # Subir el reporte HTML como un artifact
           # Listar archivos para verificar la ubicación del reporte
