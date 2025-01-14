@@ -34,14 +34,12 @@ jobs:
 
       - name: Verify JAR file
         run: ls build/libs/
-
       # Iniciar el servidor Spring Boot
       - name: Start Spring Boot Server
         run: |
           nohup java -jar build/libs/api_zelda-1.0.0.jar &
         env:
           SPRING_PROFILES_ACTIVE: test
-
       # Esperar a que el servidor esté listo
       - name: Wait for Server
         run: |
@@ -55,23 +53,19 @@ jobs:
           done;
           echo "Server did not start in time.";
           exit 1
-
       # Configurar Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'
-
       # Instalar Newman y el reporter HTML
       - name: Install Newman and HTML Reporter
         run: |
           npm install -g newman
-          npm install -g newman-reporter-html
-
+          npm install -g newman-reporter-htmlextra
       # Ejecutar la colección Postman con Newman
       - name: Run Postman Collection with Newman
         run: newman run ./collections/games.postman_collection.json --reporters cli,html --reporter-html-export ./newman-report.html
-
       # Subir el reporte HTML como un artifact
       - name: Upload Newman Report as Artifact
         uses: actions/upload-artifact@v3

@@ -1,10 +1,9 @@
 package org.gjimenez.domain.entity;
 
-public class CharacterDto {
+public class CreateUser {
 
   private String id;
-  private String race;
-  private String gender;
+  private String job;
   private String name;
 
   public String getId() {
@@ -15,20 +14,12 @@ public class CharacterDto {
     this.id = id;
   }
 
-  public String getRace() {
-    return race;
+  public String getJob() {
+    return job;
   }
 
-  public void setRace(String race) {
-    this.race = race;
-  }
-
-  public String getGender() {
-    return gender;
-  }
-
-  public void setGender(String gender) {
-    this.gender = gender;
+  public void setJob(String job) {
+    this.job = job;
   }
 
   public String getName() {
