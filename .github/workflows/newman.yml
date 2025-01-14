@@ -66,17 +66,11 @@ jobs:
       # Ejecutar la colección Postman con Newman
       - name: Run Postman Collection with Newman
         run: |
-          mkdir -p reports
-          newman run ./collections/reqres.in.local.postman_collection.json -r htmlextra --reporter-htmlextra-export ./reports/result.html
-
-    # Subir el reporte HTML como un artifact
-          # Listar archivos para verificar la ubicación del reporte
-      - name: List files in workspace
-        run: ls -R ./reports
+          newman run ./collections/reqres.in.local.postman_collection.json --reporters htmlextra --reporter-htmlextra-export ./newman-report.html
 
       # Subir el reporte como un artefacto
       - name: Upload Newman Report
         uses: actions/upload-artifact@v3
         with:
           name: newman-report
-          path: ./reports/newman-report.html
+          path: ./newman-report.html
