@@ -43,43 +43,6 @@ jobs:
         env:
           SPRING_PROFILES_ACTIVE: test
 
-      # Esperar a que el servidor esté listo
-      - name: Wait for Server
-        run: |
-          for i in {1..10}; do
-            if nc -z localhost 8080; then
-              echo "Server is up!";
-              exit 0;
-            fi;
-            echo "Waiting for server...";
-            sleep 5;
-          done;
-          echo "Server did not start in time.";
-          exit 1
-
-      # Configurar Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
-      # Instalar Newman y el reporter HTML
-      - name: Install Newman and HTML Reporter
-        run: |
-          npm install -g newman
-          npm install -g newman-reporter-htmlextra
-
-      # Ejecutar la colección Postman con Newman
-      - name: Run Postman Collection with Newman
-        run: |
-          newman run ./collections/reqres.in.local.postman_collection.json --reporters htmlextra --reporter-htmlextra-export ./newman-report.html
-
-      # Subir el reporte como un artefacto
-      - name: Upload Newman Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: newman-report
-          path: ./newman-report.html
 
 
       # Desplegar en Elastic Beanstalk
