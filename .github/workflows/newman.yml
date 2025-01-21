@@ -42,7 +42,6 @@ jobs:
           nohup java -jar build/libs/*.jar & # Usar el JAR generado
         env:
           SPRING_PROFILES_ACTIVE: test
-          SERVER_PORT: 80
 
       # Esperar a que el servidor esté listo
       - name: Wait for Server
