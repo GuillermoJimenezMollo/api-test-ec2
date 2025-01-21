@@ -81,6 +81,7 @@ jobs:
           name: newman-report
           path: ./newman-report.html
 
+
       # Desplegar en Elastic Beanstalk
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
