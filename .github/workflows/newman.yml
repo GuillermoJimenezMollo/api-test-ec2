@@ -91,4 +91,4 @@ jobs:
           environment_name: ${{ secrets.EB_ENV_NAME }}
           region: ${{ secrets.AWS_REGION }}
           version_label: v-${{ github.run_id }}
-          deployment_package: build/libs/*.jar # Archivo que será desplegado
+          deployment_package: build/libs/api-test-1.0.0.jar # Archivo que será desplegado
