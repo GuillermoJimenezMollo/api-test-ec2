@@ -42,17 +42,19 @@ jobs:
           nohup java -jar build/libs/*.jar & # Usar el JAR generado
         env:
           SPRING_PROFILES_ACTIVE: test
-
-
-
-      # Desplegar en Elastic Beanstalk
-      - name: Deploy to Elastic Beanstalk
-        uses: einaregilsson/beanstalk-deploy@v21
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: 'Springboot-example-app' # Cambia esto por el nombre de tu aplicación
-          environment_name: ${{ secrets.EB_ENV_NAME }}
-          region: ${{ secrets.AWS_REGION }}
-          version_label: v-${{ github.run_id }}
-          deployment_package: build/libs/api-test-1.0.0.jar # Archivo que será desplegado
+      - name: Login to docker hub
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+      - name: Build docker image
+        run: docker build -t gjimenez07/cicd-pipeline .
+      - name: Publish image to docker hub
+        run: docker push gjimenez07/cicd-pipeline:latest
+    deploy:
+      needs: build
+      runs-on: [ aws-ec2 ]
+      steps:
+      - name: Pull Image from docker hub
+        run: docker pull gjimenez07/cicd-pipeline:latest
+      - name: Delete old container
+        run: docker rm -f cicd-pipeline-container
+      - name: Run docker container
+        run: docker run -d -p 8080:8080 --name cicd-pipeline-container gjimenez07/cicd-pipeline

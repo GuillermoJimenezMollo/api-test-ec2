@@ -21,7 +21,7 @@ tasks.named('jar') {
 }
 
 bootJar {
-    archiveBaseName.set('api-test') // Nombre del JAR
+    archiveBaseName.set('api-test-ec2') // Nombre del JAR
     archiveVersion.set('1.0.0') // Versión del JAR
 
 }
