@@ -1,5 +1,4 @@
-name: CI/CD Pipeline with Spring Boot, Gradle, and Newman
-
+name: CI/CD Pipeline with Spring Boot, Gradle
 on:
   push:
     branches:
