@@ -10,5 +10,4 @@ COPY build/libs/api-test-ec2-1.0.0.jar app.jar
 # Exponer el puerto donde tu app corre
 EXPOSE 8080
 
-# Comando para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
