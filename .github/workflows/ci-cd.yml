@@ -28,7 +28,7 @@ jobs:
       # Verificar el archivo JAR generado
       - name: Verify JAR file
         run: ls build/libs/
-      # Iniciar el servidor Spring Boot para pruebas local
+      # Iniciar el servidor Spring Boot para pruebas locales
       - name: Start Spring Boot Server
         run: |
           nohup java -jar build/libs/*.jar & # Usar el JAR generado
