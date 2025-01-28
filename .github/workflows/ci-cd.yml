@@ -40,6 +40,7 @@ jobs:
         run: docker build -t gjimenez07/cicd-pipeline .
       - name: Publish image to docker hub
         run: docker push gjimenez07/cicd-pipeline:latest
+        
   deploy:
     needs: build
     runs-on: [aws-ec2]
